@@ -36,7 +36,6 @@ public class Account {
 		return "Account [acno=" + acno + ", name=" + name + ", type=" + type + ", balance=" + balance + "]";
 	}
 
-
 	public long getAcno() {
 		return acno;
 	}

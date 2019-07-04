@@ -9,50 +9,57 @@ import com.lti.entity.Customer;
 
 public class CustomerTest {
 
+	CustomerDao dao = new CustomerDao();
+	
 	@Test
 	public void testAdd() {
-		Customer c = new Customer();
-		c.setName("gggwwgag");
-		c.setEmail("ggawwgwwg@y111.com");
-		c.setCity("gaggg");
-		// c.setDob(java.sql.Date.valueOf("1997-09-25"));
-		CustomerDao dao = new CustomerDao();
-		//dao.addInDatabase(c);
-		dao.update(c);
+		Customer customer = new Customer();
+		customer.setName("Saurav");
+		customer.setEmail("hunter.devil12@gmail.com");
+		customer.setCity("Kolkata");
+		customer.setDob(java.sql.Date.valueOf("1997-12-06"));
+		dao.addCustomer(customer);
 	}
 
 	@Test
-	public void fetch() {
-		//Customer c = new Customer();
-		CustomerDao dao = new CustomerDao();
-		dao.fetch();
-		List<Customer> cu=dao.fetchCustomerByEmail("yahoo");
-		for (Customer q:cu) {
-			System.out.println(q.getId());
-		System.out.println(q.getName());
-		System.out.println(q.getCity());
-		System.out.println(q.getEmail());
-		System.out.println(q.getDob());
+	public void testFetchByEmail() {
+		List<Customer> customers = dao.fetchCustomerByEmail("gmail");
+		for (Customer customer_iterator:customers) {
+			System.out.println(customer_iterator.getId());
+			System.out.println(customer_iterator.getName());
+			System.out.println(customer_iterator.getCity());
+			System.out.println(customer_iterator.getEmail());
+			System.out.println(customer_iterator.getDob());
 		}
 	}
+	
+	@Test
+	public void testFetchAll() {
+		List<Customer> customers = dao.fetchAll();
+		for (Customer customer_iterator:customers) {
+			System.out.println(customer_iterator.getId());
+			System.out.println(customer_iterator.getName());
+			System.out.println(customer_iterator.getCity());
+			System.out.println(customer_iterator.getEmail());
+			System.out.println(customer_iterator.getDob());
+		}
+	}
+	
 	@Test
 	public void testUpdate() {
-		
-		CustomerDao dao = new CustomerDao();
-		Customer c = (Customer) dao.fetch();
-		c.setEmail("ssddd.ia@gmail.com");
-		c.setCity("Gujaraat");
-		
-		dao.update(c);
+		Customer customer = dao.fetchById(5);
+		customer.setCity("Chennai");
+		dao.updateCustomer(customer);
 	}
 
 	@Test
-	public void testDelete() {
-		
-		CustomerDao dao = new CustomerDao();
-		List<Customer> c = dao.fetch();
-		
-		dao.delete(c);
+	public void testFetchById() {
+		System.out.println(dao.fetchById(4));
 	}
-
+	
+	@Test
+	public void testDelete() {
+		Customer customer = dao.fetchById(5);
+		dao.deleteCustomer(customer);
+	}
 }

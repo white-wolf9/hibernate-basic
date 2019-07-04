@@ -10,29 +10,32 @@ import com.lti.dao.GenericDao;
 import com.lti.entity.Customer;
 import com.lti.entity.Order;
 import com.lti.entity.Payment;
+import com.lti.model.enums.PaymentStatus;
 
 public class PaymentTest {
 
+	GenericDao dao = new GenericDao();
+	
 	@Test
-public void orderPayment() {
+	public void testMakePayment() {	
+		Payment payment = new Payment();
+		payment.setAmount(5500);
+		payment.setPaymentmode("Cash");
+		payment.setPaymentstatus("Pass");
+		/* payment.setPaymentstatus(PaymentStatus.Pass); */
+		dao.save(payment);
 		
-		GenericDao dao = new GenericDao();
-		Payment p = new Payment();
-		
-		p.setAmount(5000);
-		p.setPaymentmode("cash");
-		p.setPaymentstatus("pass");
-		
-		dao.save(p);
+		/*
+		 * Trying to save enum value in database stores an absurdly long string.
+		 */
 	}
 	
 	@Test
-	public void linkPayment() {
-		GenericDao dao=new GenericDao();
-		Order o=(Order) dao.fetchById(Order.class, 95);
-		Payment p=(Payment) dao.fetchById(Payment.class,1);
-		o.setPayment(p);
-		dao.save(o);
+	public void testLinkPayment() {
+		Order order = (Order) dao.fetchById(Order.class, 8);
+		Payment payment = (Payment) dao.fetchById(Payment.class, 21);
+		order.setPayment(payment);
+		dao.save(order);
 	}
 
 

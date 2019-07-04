@@ -41,15 +41,14 @@ public class AccountDao extends GenericDao {
 			emf=Persistence.createEntityManagerFactory("oracle-pu");
 			em=emf.createEntityManager();
 			String query_line ="select a from Account a where a.balance > :balance";
-			Query query =  em.createQuery(query_line);
-			//query.setFirstResult(10);	Gives the position from where it is started. Used in combination with setMaxResult  
+			Query query =  em.createQuery(query_line);  
 			query.setParameter("balance", balance);
 			List<Account> list = query.getResultList();
 			return  list;
 		}
 		finally {
-		em.close();
-		emf.close();
+			em.close();
+			emf.close();
 		}
 	}
 	
@@ -68,8 +67,8 @@ public class AccountDao extends GenericDao {
 			return  list;
 		}
 		finally {
-		em.close();
-		emf.close();
+			em.close();
+			emf.close();
 		}
 	}
 

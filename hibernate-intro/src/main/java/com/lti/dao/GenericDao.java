@@ -10,18 +10,18 @@ import javax.persistence.Query;
 
 import com.lti.entity.Customer;
 
-public class GenericDao {     //BaseDao,commonDao class
+public class GenericDao {
  
-	public void save(Object obj) {
+	public void save(Object object) {
 		EntityManagerFactory emf=null;
 		EntityManager em=null;
 		try {
-			emf=Persistence.createEntityManagerFactory("oracle-pu");
-			em=emf.createEntityManager();
-			EntityTransaction et=em.getTransaction();
-			et.begin();
-			em.merge(obj);   // merge can be used for both update and insert
-			et.commit();
+			emf = Persistence.createEntityManagerFactory("oracle-pu");
+			em = emf.createEntityManager();
+			EntityTransaction tx = em.getTransaction();
+			tx.begin();
+			em.merge(object);
+			tx.commit();
 		}
 		finally {
 			em.close();
@@ -29,44 +29,34 @@ public class GenericDao {     //BaseDao,commonDao class
 		}
 	}
 	
-	public  Object fetchById(Class classname, Object Id) {   
+	public  Object fetchById(Class classname, Object id) {   
 		EntityManagerFactory emf=null;
 		EntityManager em=null;
 		try {
-	  emf=Persistence.createEntityManagerFactory("oracle-pu");
-	  em=emf.createEntityManager();
-	
-	Object obj = em.find(classname, Id);
-	return obj;
-	
+			emf=Persistence.createEntityManagerFactory("oracle-pu");
+			em=emf.createEntityManager();
+			Object obj = em.find(classname, id);
+			return obj;
 		}
 		finally {
-    em.close();
-	emf.close();
+			em.close();
+			emf.close();
 		}	
- }
-	
-	public  <E> List<E> fetchAll(Class<E> clazz) {                                          //fetch all the records in the table
-		EntityManagerFactory emf=null;
-		EntityManager em=null;
-		try {
-		
-		emf=Persistence.createEntityManagerFactory("oracle-pu");
-		em=emf.createEntityManager();
-		
-	
-		Query q =  em.createQuery("select obj from  " + clazz.getName() + " as obj ");
-			//in hibernate we give the class name which find the table name from the class name
-		
-		List<E> list = q.getResultList();
-				return  list;
-		}
-		finally {
-		em.close();
-		emf.close();
-		}
-		
 	}
 	
-	
+	public  <E> List<E> fetchAll(Class<E> classobject) {
+		EntityManagerFactory emf=null;
+		EntityManager em=null;
+		try {
+			emf=Persistence.createEntityManagerFactory("oracle-pu");
+			em=emf.createEntityManager();
+			Query q =  em.createQuery("select obj from  " + classobject.getName() + " as obj ");
+			List<E> list = q.getResultList();
+			return  list;
+		}
+		finally {
+			em.close();
+			emf.close();
+		}
+	}
 }

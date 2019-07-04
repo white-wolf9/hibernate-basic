@@ -28,10 +28,8 @@ public class Order {
 	 @JoinColumn(name= "PAYID")
 	 private Payment payment;
 	 
-	 
-	 
 	 @ManyToOne
-	 @JoinColumn(name = "CUST_ID") //fk
+	 @JoinColumn(name = "CUST_ID")
 	 private Customer customer;
 
 	public int getId() {
@@ -72,6 +70,12 @@ public class Order {
 
 	public void setPayment(Payment payment) {
 		this.payment = payment;
+	}
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", orderDate=" + orderDate + ", amount=" + amount + ", payment=" + payment
+				+ ", customer=" + customer + "]";
 	}
 
 	

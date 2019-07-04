@@ -9,14 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tbl_cust") 	//we dont need to specify the table name if we are using the table name same as class name
+@Table(name="TBL_CUST")
 public class Customer {
 
-	@Id 									//primary key  ---hibernate will automatically understand that id is the primary key
-	@GeneratedValue 			//to inform hibernate that this will be a generated value, and not a provided value
-	@Column(name="cust_id")
-	private int id; 					//we have to put @Id over the column which is primary key
-	
+	@Id 									
+	@GeneratedValue 			
+	@Column(name="CUST_ID")
+	private int id;
 	private String name;
 	
 	@Column(unique=true)
@@ -24,6 +23,7 @@ public class Customer {
 	
 	private Date dob;
 	private String city;
+	
 	public int getId() {
 		return id;
 	}
@@ -53,6 +53,11 @@ public class Customer {
 	}
 	public void setCity(String city) {
 		this.city = city;
+	}
+	
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", name=" + name + ", email=" + email + ", dob=" + dob + ", city=" + city + "]";
 	}
 	
 }

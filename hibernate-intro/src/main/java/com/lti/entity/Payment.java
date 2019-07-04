@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.lti.model.enums.PaymentStatus;
+
 @Entity
 @Table(name = "TBL_PAYMENT")
 public class Payment {
@@ -20,7 +22,7 @@ public class Payment {
 	private int amount;
 	private String paymentmode;
 	private String paymentstatus;
-	
+	/* private Enum<PaymentStatus> paymentstatus; */
 	
 	public int getId() {
 		return id;
@@ -31,6 +33,11 @@ public class Payment {
 	public int getAmount() {
 		return amount;
 	}
+
+	/*
+	 * public void setPaymentstatus(Enum<PaymentStatus> paymentstatus) {
+	 * this.paymentstatus = paymentstatus; }
+	 */
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
@@ -41,11 +48,12 @@ public class Payment {
 		this.paymentmode = paymentmode;
 	}
 	public String getPaymentstatus() {
-		return paymentstatus;
-	}
-	public void setPaymentstatus(String paymentstatus) {
+		return paymentstatus; 
+	} 
+	public void setPaymentstatus(String paymentstatus) { 
 		this.paymentstatus = paymentstatus;
 	}
+	 
 	
 
 

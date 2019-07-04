@@ -18,14 +18,12 @@ public class AccountService {
 	
 	AccountDao dao = new AccountDao();
 
-	public void openAccount(Account acc) {
-		dao.save(acc);
-		//apart from this we might write/execute the code for sending 
-		//email to the customer here
+	public void openAccount(Account account) {
+		dao.save(account);
 	}
 	
-	public void withdraw(long acno,double amount ) {
-		
+	public void withdrawFromAccount(long acno,double amount ) {
+	
 		Transaction transaction = new Transaction();
 		transaction.setDate(new Date());
 		transaction.setType("WITHDRAW");
@@ -49,7 +47,7 @@ public class AccountService {
 		dao.save(transaction);
 	}
 	
-public void deposit(long acno,double amount ) {
+	public void depositToAccount(long acno,double amount ) {
 		
 		Transaction transaction = new Transaction();
 		transaction.setDate(new Date());
@@ -66,10 +64,9 @@ public void deposit(long acno,double amount ) {
 		transset.add(transaction);
 		account.setTransactions(transset);*/
 		dao.save(transaction);
-		
 	}
 	
-	public void transfer(long fromAcno, long toAcno, double amount ) {
+	public void transferFromAccountToAccount(long fromAcno, long toAcno, double amount ) {
 		
 		Transaction transaction = new Transaction();
 		transaction.setDate(new Date());
@@ -107,11 +104,9 @@ public void deposit(long acno,double amount ) {
 		transset.add(transaction);
 		account.setTransactions(transset);*/
 		dao.save(transaction);
-		
-		
 	}
 	
-	public void checkBalance(long acno ) {
+	public void checkAccountBalance(long acno ) {
 		Account account = (Account) dao.fetchById(Account.class, acno);
 		System.out.println(account.getBalance());
 	}
@@ -121,7 +116,7 @@ public void deposit(long acno,double amount ) {
 		return list;
 	}
 	
-	public List<Account> greaterBalance(double balance) {
+	public List<Account> greaterBalanceThan(double balance) {
 		List<Account> list = dao.fetchGreaterThanBalance(balance);
 		return list;
 	}

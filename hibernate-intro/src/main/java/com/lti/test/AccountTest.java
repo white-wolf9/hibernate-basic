@@ -17,57 +17,54 @@ public class AccountTest {
 
 	@Test
 	public void testOpenAccount() {
-
-		Account acc = new Account();
-		acc.setName("MJ");
-		acc.setType("Savings");
-		acc.setBalance(5000);
-		accServ.openAccount(acc);
-		
+		Account account = new Account();
+		account.setName("Rishab Gautam");
+		account.setType("Savings");
+		account.setBalance(15000);
+		accServ.openAccount(account);
 	}
 	
 	@Test
-	public void testWithdraw() {
-		accServ.withdraw(141, 100 );
+	public void testAccountWithdraw() {
+		accServ.withdrawFromAccount(24, 1000);
 	}
 	
 	@Test
-	public void testDeposit() {
-		accServ.deposit(141, 200 );
+	public void testAccountDeposit() {
+		accServ.depositToAccount(24, 1000);
 	}
 	
 	@Test
 	public void testCheckBalance() {
-		
-		accServ.checkBalance(141);
+		accServ.checkAccountBalance(24);
 	}
 	
 	@Test
 	public void testTransfer() {
-		accServ.transfer(421, 142, 1000);
+		accServ.transferFromAccountToAccount(26, 24, 5000);
 	}
 
 	@Test
 	public void testMiniStatement() {
-		List<Transaction> list = accServ.miniStatement(141);
-		for(Transaction t:list) {
-			System.out.println(t);
+		List<Transaction> list = accServ.miniStatement(24);
+		for(Transaction transaction_iterator:list) {
+			System.out.println(transaction_iterator);
 		}
 	}
 	
 	@Test
-	public void testGreatBalance() {
-		List<Account> list = accServ.greaterBalance(1000);
-		for(Account a:list) {
-			System.out.println(a);
+	public void testGreaterBalance() {
+		List<Account> list = accServ.greaterBalanceThan(1000);
+		for(Account account_iterator:list) {
+			System.out.println(account_iterator);
 		}
 	}
 	
 	@Test
 	public void testAccountByActivity() {
 		List<Account> list = accServ.accountActivity("WITHDRAW",100);
-		for(Account a:list) {
-			System.out.println(a);
+		for(Account account_iterator:list) {
+			System.out.println(account_iterator);
 		}
 	}
 }

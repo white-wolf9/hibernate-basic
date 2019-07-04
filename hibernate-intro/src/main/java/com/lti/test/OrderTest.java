@@ -14,36 +14,33 @@ import com.lti.entity.Order;
 
 public class OrderTest {
 
+	GenericDao dao = new GenericDao();
+	
 	@Test
-	public void placeOrder() {
-		
-		GenericDao dao = new GenericDao();
-		Customer cust = (Customer) dao.fetchById(Customer.class, 23);
-		
-		Order o = new Order();
-		
-		o.setOrderDate(new Date());
-		o.setAmount(4500);		 
-		o.setCustomer(cust);
-		dao.save(o);
+	public void testPlaceOrder() {
+		Customer customer = (Customer) dao.fetchById(Customer.class, 6);
+		Order order = new Order();
+		order.setOrderDate(java.sql.Date.valueOf("2019-01-06"));
+		order.setAmount(6100);		 
+		order.setCustomer(customer);
+		dao.save(order);
 	}
 
 	
 	@Test
-	public void fetchOrders() {
+	public void testFetchAllOrders() {
 		
-		GenericDao dao = new GenericDao();
-		List<Order> orders= dao.fetchAll(Order.class);
-		
-		for(Order order : orders) {
-
-		System.out.println(order.getId());
-		System.out.println(order.getOrderDate());
-		System.out.println(order.getAmount());
-		System.out.println(order.getCustomer().getEmail());
-		System.out.println(order.getCustomer().getCity());
-		System.out.println(order.getCustomer().getName());;
-		
+		List<Order> orders = dao.fetchAll(Order.class);
+		for(Order order_iterator : orders) {
+			System.out.println(order_iterator);
+			/*
+			 * System.out.println(order_iterator.getId());
+			 * System.out.println(order_iterator.getOrderDate());
+			 * System.out.println(order_iterator.getAmount());
+			 * System.out.println(order_iterator.getCustomer().getEmail());
+			 * System.out.println(order_iterator.getCustomer().getCity());
+			 * System.out.println(order_iterator.getCustomer().getName());
+			 */
 		}
 	}
 }
