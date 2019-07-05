@@ -18,7 +18,7 @@ public class AccountTest {
 	@Test
 	public void testOpenAccount() {
 		Account account = new Account();
-		account.setName("Rishab Gautam");
+		account.setName("Saurav");
 		account.setType("Savings");
 		account.setBalance(15000);
 		accServ.openAccount(account);
@@ -26,12 +26,12 @@ public class AccountTest {
 	
 	@Test
 	public void testAccountWithdraw() {
-		accServ.withdrawFromAccount(24, 1000);
+		accServ.withdrawFromAccount(206, 150);
 	}
 	
 	@Test
 	public void testAccountDeposit() {
-		accServ.depositToAccount(24, 1000);
+		accServ.depositToAccount(206, 1000);
 	}
 	
 	@Test
@@ -41,7 +41,7 @@ public class AccountTest {
 	
 	@Test
 	public void testTransfer() {
-		accServ.transferFromAccountToAccount(26, 24, 5000);
+		accServ.transferFromAccountToAccount(206, 204, 5000);
 	}
 
 	@Test

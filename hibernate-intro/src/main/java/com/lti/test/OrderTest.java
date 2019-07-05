@@ -18,7 +18,7 @@ public class OrderTest {
 	
 	@Test
 	public void testPlaceOrder() {
-		Customer customer = (Customer) dao.fetchById(Customer.class, 6);
+		Customer customer = (Customer) dao.fetchById(Customer.class, 213);
 		Order order = new Order();
 		order.setOrderDate(java.sql.Date.valueOf("2019-01-06"));
 		order.setAmount(6100);		 

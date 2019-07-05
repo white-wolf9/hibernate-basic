@@ -32,8 +32,8 @@ public class PaymentTest {
 	
 	@Test
 	public void testLinkPayment() {
-		Order order = (Order) dao.fetchById(Order.class, 8);
-		Payment payment = (Payment) dao.fetchById(Payment.class, 21);
+		Order order = (Order) dao.fetchById(Order.class, 214);
+		Payment payment = (Payment) dao.fetchById(Payment.class, 216);
 		order.setPayment(payment);
 		dao.save(order);
 	}
