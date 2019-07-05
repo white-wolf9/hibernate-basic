@@ -33,6 +33,19 @@ public class UserAddressTest {
 
 	@Test
 	public void addUserAndAddressTogether() {
+	
+		User user = new User();
+		user.setName("Shreyansh Singh");
+		user.setEmail("singh.shrey@gmail.com");
+	
+		Address address = new Address();
+		address.setCity("Baghdad");
+		address.setPincode(666210);
+		address.setState("DMZ");
 		
+		user.setAddress(address);
+		address.setUser(user);
+		
+		dao.save(user);
 	}
 }

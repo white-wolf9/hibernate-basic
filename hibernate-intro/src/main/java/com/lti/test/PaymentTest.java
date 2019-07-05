@@ -19,10 +19,10 @@ public class PaymentTest {
 	@Test
 	public void testMakePayment() {	
 		Payment payment = new Payment();
-		payment.setAmount(5500);
+		payment.setAmount(7500);
 		payment.setPaymentmode("Cash");
-		payment.setPaymentstatus("Pass");
-		/* payment.setPaymentstatus(PaymentStatus.Pass); */
+		/* payment.setPaymentstatus("Pass"); */
+		payment.setPaymentstatus(PaymentStatus.Pass);
 		dao.save(payment);
 		
 		/*

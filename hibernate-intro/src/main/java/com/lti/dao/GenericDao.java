@@ -59,4 +59,21 @@ public class GenericDao {
 			emf.close();
 		}
 	}
+	
+	public void delete(Object object) {
+		EntityManagerFactory emf=null;
+		EntityManager em=null;
+		try {
+			emf = Persistence.createEntityManagerFactory("oracle-pu");
+			em = emf.createEntityManager();
+			EntityTransaction tx = em.getTransaction();
+			tx.begin();
+			em.remove(object);
+			tx.commit();
+		}
+		finally {
+			em.close();
+			emf.close();
+		}
+	}
 }
