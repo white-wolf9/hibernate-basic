@@ -27,13 +27,14 @@ public class Account {
 	 
 	 private double balance;
 	
-	 @OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
+	 @OneToMany(fetch = FetchType.EAGER, mappedBy = "account")
      private Set<Transaction> transactions;
 
 
 	@Override
 	public String toString() {
-		return "Account [acno=" + acno + ", name=" + name + ", type=" + type + ", balance=" + balance + "]";
+		return "Account [acno=" + acno + ", name=" + name + ", type=" + type + ", balance=" + balance
+				+ ", transactions=" + transactions + "]";
 	}
 
 	public long getAcno() {

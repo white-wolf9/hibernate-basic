@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.lti.dao.AccountDao;
 import com.lti.dao.GenericDao;
 import com.lti.entity.Account;
 import com.lti.entity.Transaction;
@@ -14,6 +15,7 @@ import com.lti.service.AccountService;
 public class AccountTest {
 	
 	AccountService accServ = new AccountService();
+	AccountDao dao = new AccountDao();
 
 	@Test
 	public void testOpenAccount() {
@@ -65,6 +67,20 @@ public class AccountTest {
 		List<Account> list = accServ.accountActivity("WITHDRAW",100);
 		for(Account account_iterator:list) {
 			System.out.println(account_iterator);
+		}
+	}
+	
+	@Test
+	public void testFetchAll() {
+		List<Account> list = dao.fetchAll(Account.class);
+		for(Account account_iterator:list) {
+			System.out.println(account_iterator);
+			/*
+			 * Stack Overflow Error possibility while using toString()
+			 * Because Transaction toString will also have Account in it
+			 * In that case generate a new toString() for Transaction
+			 * without Account
+			 */
 		}
 	}
 }

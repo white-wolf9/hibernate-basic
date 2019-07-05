@@ -16,12 +16,12 @@ public class User {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "U_ID")	//referenceColumnName="email" can be included for a pk
+	@Column(name = "U_ID")
 	private int id;
 	private String name;
 	private String email;
 	
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "user",fetch =FetchType.EAGER,  cascade = CascadeType.ALL)
 	private Address address;
 
 	public int getId() {
@@ -58,7 +58,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + "]";
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", address=" + address + "]";
 	}
 
 }

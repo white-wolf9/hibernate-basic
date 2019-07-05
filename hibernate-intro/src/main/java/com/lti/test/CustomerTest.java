@@ -59,7 +59,7 @@ public class CustomerTest {
 	
 	@Test
 	public void testDelete() {
-		Customer customer = dao.fetchById(5);
+		Customer customer = dao.fetchById(213);
 		dao.deleteCustomer(customer);
 	}
 }
