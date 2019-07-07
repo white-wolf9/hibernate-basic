@@ -34,12 +34,12 @@ public class UserAddressTest {
 	@Test
 	public void addUserAndAddressTogether() {
 
-		user.setName("Shreyansh Singh");
-		user.setEmail("singh.shrey@gmail.com");
+		user.setName("Ekansh Singh");
+		user.setEmail("singh.ekansh@gmail.com");
 
-		address.setCity("Baghdad");
-		address.setPincode(666210);
-		address.setState("DMZ");
+		address.setCity("Mumbai");
+		address.setPincode(400701);
+		address.setState("Maharashtra");
 		
 		user.setAddress(address);
 		address.setUser(user);
