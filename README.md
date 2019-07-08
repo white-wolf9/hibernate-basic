@@ -47,7 +47,6 @@
 # TO-CHANGE in case of office machine
 
 # pom.xml
-</dependency>
 <dependency>
 <groupId>com.oracle</groupId>
 <artifactId>ojdbc8</artifactId>
