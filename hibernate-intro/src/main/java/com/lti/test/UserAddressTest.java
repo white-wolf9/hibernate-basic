@@ -23,7 +23,7 @@ public class UserAddressTest {
 	
 	@Test
 	public void testAddAddressForAnExistingUser() {
-		user = (User) dao.fetchById(User.class, 221);
+		user = (User) dao.fetchById(User.class, 322);
 		address.setCity("Whiterun");
 		address.setPincode(696969);
 		address.setState("Tamriel");
@@ -51,5 +51,10 @@ public class UserAddressTest {
 	public void fetchUserAndAddressBoth() {
 		user = (User) dao.fetchById(User.class, 241);
 		System.out.println(user);	
+	}
+	
+	@Test
+	public void deleteUserAndAddressBoth() {
+		dao.delete(User.class, 322);
 	}
 }

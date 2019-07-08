@@ -60,7 +60,7 @@ public class GenericDao {
 		}
 	}
 	
-	public void delete(Object object) {
+	public void delete(Class classname, Object id) {
 		EntityManagerFactory emf=null;
 		EntityManager em=null;
 		try {
@@ -68,6 +68,7 @@ public class GenericDao {
 			em = emf.createEntityManager();
 			EntityTransaction tx = em.getTransaction();
 			tx.begin();
+			Object object = em.find(classname, id);
 			em.remove(object);
 			tx.commit();
 		}
